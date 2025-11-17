@@ -7,8 +7,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { MapContext } from "@/context/map-context";
 import { Loader } from "lucide-react";
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
-
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN!;
 type MapComponentProps = {
   mapContainerRef: React.RefObject<HTMLDivElement | null>;
   initialViewState: {

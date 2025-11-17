@@ -7,7 +7,7 @@ function getSessionToken(): string {
     const stored = sessionStorage.getItem("mapbox_session_token");
     if (stored) return stored;
 
-    const token = process.env.NEXT_PUBLIC_MAPBOX_SESSION_TOKEN ?? "";
+    const token = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN ?? "";
     sessionStorage.setItem("mapbox_session_token", token);
     return token;
   }
@@ -35,7 +35,7 @@ export async function searchLocations(
 ): Promise<LocationSuggestion[]> {
   const { query, country = "US", limit = 5, proximity, signal } = options;
 
-  const accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
   if (!accessToken) {
     throw new Error("MAPBOX_TOKEN is not configured");
   }
@@ -81,7 +81,7 @@ export async function retrieveLocation(
   mapboxId: string,
   signal?: AbortSignal
 ): Promise<LocationFeature[]> {
-  const accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
   if (!accessToken) {
     throw new Error("MAPBOX_TOKEN is not configured");
   }
